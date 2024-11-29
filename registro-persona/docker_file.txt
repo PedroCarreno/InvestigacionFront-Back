@@ -1,0 +1,4 @@
+Para construir y ejecutar el contenedor:
+
+docker build -t registro-persona .
+docker run -p 3000:3000 registro-persona
