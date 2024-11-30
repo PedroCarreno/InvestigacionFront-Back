@@ -11,6 +11,10 @@ app = Flask(__name__)
 # Habilitar CORS para toda la aplicación
 CORS(app)  # cambio esto! 
 
+@app.route('/')
+def home():
+    return '¡Hola, mundo!'
+
 # Ruta para registrar una persona
 @app.route('/person', methods=['POST'])
 def create_person():
