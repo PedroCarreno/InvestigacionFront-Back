@@ -1,9 +1,15 @@
 {
-    "builds": [
-      {
-        "src": "registro-persona/package.json",
-        "use": "@vercel/node"
-      }
-    ]
-  }
-  
+  "version": 2,
+  "builds": [
+    {
+      "src": "registro-persona/package.json",
+      "use": "@vercel/static-build"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
