@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import os
 
-DATABASE_URL = "postgresql://postgres:gZQeNZOVWxNLzyazHajTWJFXQpwfaczk@junction.proxy.rlwy.net:52084/railway"
+DATABASE_URL = "sqlite:///test.db"
 
 # Crear el motor de la base de datos (SQLite)
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
@@ -17,4 +17,3 @@ Base = declarative_base()  # Esto es lo que se utiliza para definir los modelos
 def init_db():
     Base.metadata.create_all(bind=engine)  # Crea las tablas en la base de datos
     print("Base de datos y tablas creadas o verificadas")
-
