@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .App-logo {
@@ -22,51 +25,9 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
-body {
-  font-family: 'Roboto', sans-serif;
-  background: linear-gradient(135deg, #ff6a00, #ff3e2a);
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  color: white;
-}
-
-
-.App {
-  text-align: center;
-  width: 100%;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-/* Header and title */
-.App-header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
   padding: 30px;
   border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .title {
@@ -129,27 +90,32 @@ body {
   font-weight: bold;
   color: #00ff00;
 }
+
 .people-list {
   width: 100%;
   max-height: 300px;  /* Limita la altura máxima de la lista */
   margin-top: 20px;
+  padding: 10px;
   background-color: #f4f4f4;
   border-radius: 8px;
-  padding: 10px;
+  box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+  overflow: hidden; /* Asegura que no haya espacio blanco innecesario */
 }
 
 .scrollable-list {
   max-height: 200px; /* Ajusta la altura del scroll */
-  overflow-y: auto;  /* Cambiado a 'auto' para habilitar el scroll cuando sea necesario */
+  overflow-y: auto;  /* Habilita el scroll vertical */
   padding-right: 10px; /* Añadido para evitar que el contenido se superponga al scroll */
 }
 
 .scrollable-list ul {
   padding: 0;
   list-style-type: none;
+  margin: 0; /* Asegura que no haya margen en la lista */
 }
 
 .scrollable-list li {
   padding: 8px;
   border-bottom: 1px solid #ccc;
+  color: #333; /* Ajuste del color del texto */
 }
