@@ -9,7 +9,7 @@ init_db()
 app = Flask(__name__)
 
 # Habilitar CORS para toda la aplicación
-CORS(app)  # Permite todos los orígenes
+CORS(app, resources={r"/person": {"origins": "http://localhost:3000", "methods": ["GET", "POST", "OPTIONS"]}})
 
 # Ruta para registrar una persona
 @app.route('/person', methods=['POST'])

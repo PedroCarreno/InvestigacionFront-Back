@@ -1,32 +1,33 @@
 import React, { useState } from 'react';
 import './App.css';
-import axios from 'axios';
+import axios from 'axios'; // Importa Axios
 
 const App = () => {
   const [name, setName] = useState('');
-  const [photo, setPhoto] = useState(null);
   const [message, setMessage] = useState('');
-
-  const handlePhotoChange = (e) => {
-    setPhoto(e.target.files[0]);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('photo', photo);
-
+  
+    console.log("Enviando nombre:", name); // Verifica si el nombre está bien definido
+  
     try {
-      const response = await axios.post('https://your-backend-url/person', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
+      const response = await axios.post('/person', {
+        name: name, // Solo enviamos el nombre, no un objeto 'person'
       });
-      setMessage('Persona registrada con éxito');
+      
+      if (response.status === 200) {
+        setMessage(response.data.message); // Utiliza el mensaje desde la respuesta
+      } else {
+        setMessage('Error: ' + response.data.error);
+      }
+
     } catch (error) {
+      console.error('Error al registrar persona:', error);
       setMessage('Error al registrar persona');
     }
   };
-
+  
   return (
     <div className="App">
       <header className="App-header">
@@ -38,12 +39,6 @@ const App = () => {
             placeholder="Nombre"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            required
-            className="input-field"
-          />
-          <input
-            type="file"
-            onChange={handlePhotoChange}
             required
             className="input-field"
           />
