@@ -9,7 +9,7 @@ init_db()
 app = Flask(__name__)
 
 # Habilitar CORS para toda la aplicación
-CORS(app)  # cambio esto! 
+CORS(app, origins=["https://investigacion-front-back-2lll.vercel.app"])
 
 @app.route('/')
 def home():

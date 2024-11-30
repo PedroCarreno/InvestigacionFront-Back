@@ -6,13 +6,15 @@ const App = () => {
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
 
+  const backendUrl = 'https://investigacionfront-back.onrender.com';  // URL del backend en Render
+
   const handleSubmit = async (e) => {
     e.preventDefault();
   
     console.log("Enviando nombre:", name); // Verifica si el nombre está bien definido
   
     try {
-      const response = await axios.post('/person', {
+      const response = await axios.post(`${backendUrl}/person`, {
         name: name, // Solo enviamos el nombre, no un objeto 'person'
       });
       
@@ -51,7 +53,6 @@ const App = () => {
 };
 
 export default App;
-
 
 /*import React, { useState } from 'react';
 import './App.css';
