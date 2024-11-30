@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import axios from 'axios'; 
+import axios from 'axios'; // Importa Axios
 import PerfectScrollbar from 'react-perfect-scrollbar'; // Importa la librería para el scroll personalizado
 import 'react-perfect-scrollbar/dist/css/styles.css'; // Estilos necesarios para la librería
 
@@ -14,9 +14,12 @@ const App = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    console.log("Enviando nombre:", name); // Verifica si el nombre está bien definido
+  
     try {
       const response = await axios.post(`${backendUrl}/person`, {
-        name: name, 
+        name: name, // Solo enviamos el nombre, no un objeto 'person'
       });
       
       if (response.status === 200) {
@@ -32,7 +35,7 @@ const App = () => {
 
   const fetchPeople = async () => {
     try {
-      const response = await axios.get(`${backendUrl}/people`);
+      const response = await axios.get(`${backendUrl}/people`); // Supongo que existe esta ruta para obtener las personas
       setPeople(response.data); // Almacena las personas en el estado
     } catch (error) {
       console.error('Error al obtener personas:', error);
@@ -40,12 +43,12 @@ const App = () => {
   };
 
   const handleShowList = async () => {
-    await fetchPeople();
-    setShowList(true);
+    await fetchPeople(); // Cargar personas antes de mostrar la lista
+    setShowList(true);  // Mostrar la lista
   };
 
   const handleCloseList = () => {
-    setShowList(false);
+    setShowList(false); // Cerrar la lista y volver a la pantalla de registro
   };
 
   return (
