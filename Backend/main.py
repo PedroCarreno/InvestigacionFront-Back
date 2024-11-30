@@ -37,5 +37,20 @@ def create_person():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+# Ruta para listar todas las personas
+@app.route('/people', methods=['GET'])
+def get_people():
+    try:
+        db = SessionLocal()
+        people = db.query(Person).all()  # Obtener todas las personas desde la base de datos
+        db.close()
+
+        # Convertir las personas a un formato adecuado para JSON
+        people_data = [{"name": person.name} for person in people]
+
+        return jsonify(people_data), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
 if __name__ == "__main__":
     app.run(debug=True)
