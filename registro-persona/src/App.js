@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import axios from 'axios'; // Importa Axios
+import axios from 'axios'; 
 import PerfectScrollbar from 'react-perfect-scrollbar'; // Importa la librería para el scroll personalizado
 import 'react-perfect-scrollbar/dist/css/styles.css'; // Estilos necesarios para la librería
 
@@ -14,12 +14,9 @@ const App = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    console.log("Enviando nombre:", name); // Verifica si el nombre está bien definido
-  
     try {
       const response = await axios.post(`${backendUrl}/person`, {
-        name: name, // Solo enviamos el nombre, no un objeto 'person'
+        name: name, 
       });
       
       if (response.status === 200) {
@@ -35,7 +32,7 @@ const App = () => {
 
   const fetchPeople = async () => {
     try {
-      const response = await axios.get(`${backendUrl}/people`); // Supongo que existe esta ruta para obtener las personas
+      const response = await axios.get(`${backendUrl}/people`);
       setPeople(response.data); // Almacena las personas en el estado
     } catch (error) {
       console.error('Error al obtener personas:', error);
@@ -43,12 +40,12 @@ const App = () => {
   };
 
   const handleShowList = async () => {
-    await fetchPeople(); // Cargar personas antes de mostrar la lista
-    setShowList(true);  // Mostrar la lista
+    await fetchPeople();
+    setShowList(true);
   };
 
   const handleCloseList = () => {
-    setShowList(false); // Cerrar la lista y volver a la pantalla de registro
+    setShowList(false);
   };
 
   return (
@@ -106,3 +103,59 @@ const App = () => {
 };
 
 export default App;
+
+
+/*import React, { useState } from 'react';
+import './App.css';
+import axios from 'axios'; // Importa Axios
+
+const App = () => {
+  const [name, setName] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    console.log("Enviando nombre:", name); // Verifica si el nombre está bien definido
+  
+    try {
+      const response = await axios.post('/person', {
+        name: name, // Solo enviamos el nombre, no un objeto 'person'
+      });
+      
+      if (response.status === 200) {
+        setMessage(response.data.message); // Utiliza el mensaje desde la respuesta
+      } else {
+        setMessage('Error: ' + response.data.error);
+      }
+
+    } catch (error) {
+      console.error('Error al registrar persona:', error);
+      setMessage('Error al registrar persona');
+    }
+  };
+  
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1 className="title">Naranjo Soft</h1>
+        <p className="subtitle">¡Bienvenido al sistema de registro!</p>
+        <form onSubmit={handleSubmit} className="form">
+          <input
+            type="text"
+            placeholder="Nombre"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+            className="input-field"
+          />
+          <button type="submit" className="btn primary-btn">Registrar</button>
+        </form>
+        {message && <p className="message">{message}</p>}
+      </header>
+    </div>
+  );
+};
+
+export default App;
+*/
