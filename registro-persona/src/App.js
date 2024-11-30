@@ -10,7 +10,7 @@ const App = () => {
   const [people, setPeople] = useState([]); // Estado para almacenar las personas
   const [showList, setShowList] = useState(false); // Estado para controlar si mostrar la lista
 
-  const backendUrl = 'https://investigacionfront-back.onrender.com';  // URL del backend en Render
+  const backendUrl = 'https://investigacion-backend-lovat.vercel.app';  // URL del backend en Render
 
   const handleSubmit = async (e) => {
     e.preventDefault();
